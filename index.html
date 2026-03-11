@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swami | Odontología Holística</title>
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-crema: #faf6f2;
+            --bg-crema-dark: #f2ece4;
+            --texto-principal: #4a4440;
+            --texto-suave: #8a7f78;
+            --acento-lavanda: #a28ab0;
+            --acento-lavanda-light: #c4b0d0;
+            --acento-lavanda-pale: #ede4f2;
+            --acento-oro: #c9a84c;
+            --acento-oro-light: #e8d5a3;
+            --blanco-puro: #ffffff;
+            --sombra: rgba(100, 80, 70, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-crema);
+            color: var(--texto-principal);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .cardImage {
+            object-fit: unset !important;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 246, 242, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 14px 40px;
+            box-shadow: 0 1px 20px rgba(100, 80, 70, 0.08);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--acento-lavanda);
+            letter-spacing: 0.04em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-principal);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--acento-lavanda);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('./assets/img/hero-manos.png') center/cover no-repeat;
+            transform: scale(1.05);
+            transition: transform 8s ease;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(250, 246, 242, 0.15) 0%,
+                    rgba(162, 138, 176, 0.18) 50%,
+                    rgba(250, 246, 242, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+            animation: heroFadeIn 1.4s ease forwards;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            color: var(--texto-principal);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--acento-lavanda);
+        }
+
+        .hero-subtitle {
+            max-width: 540px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+            color: var(--texto-suave);
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--acento-lavanda);
+            color: white;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 30px rgba(162, 138, 176, 0.35);
+        }
+
+        .hero-cta:hover {
+            background: #8e75a0;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(162, 138, 176, 0.45);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2.5s infinite;
+        }
+
+        .hero-scroll span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--acento-lavanda), transparent);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 0.68rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda);
+            margin-bottom: 14px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--texto-principal);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 em {
+            font-style: italic;
+            color: var(--acento-lavanda);
+        }
+
+        /* ─── VISION ─── */
+        .vision-section {
+            background: var(--blanco-puro);
+        }
+
+        .vision-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .vision-img-wrap {
+            position: relative;
+        }
+
+        .vision-img-wrap img {
+            width: 100%;
+            border-radius: 24px;
+            display: block;
+            object-fit: cover;
+            height: 480px;
+        }
+
+        .vision-img-badge {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            background: var(--acento-lavanda);
+            color: white;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            text-align: center;
+            line-height: 1.3;
+            font-style: italic;
+            box-shadow: 0 8px 30px rgba(162, 138, 176, 0.4);
+        }
+
+        .vision-text p {
+            font-size: 0.98rem;
+            color: var(--texto-suave);
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 48px;
+            height: 1px;
+            background: linear-gradient(to right, var(--acento-lavanda), var(--acento-oro));
+            margin: 24px 0;
+        }
+
+        /* ─── TERAPIAS ─── */
+        .terapias-section {
+            background: var(--bg-crema);
+        }
+
+        .terapias-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .terapias-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .terapia-card {
+            background: var(--blanco-puro);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px var(--sombra);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .terapia-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(100, 80, 70, 0.13);
+        }
+
+        .terapia-card:nth-child(1) {
+            grid-column: span 1;
+        }
+
+        .terapia-card.featured {
+            grid-column: span 2;
+            flex-direction: row;
+        }
+
+        .terapia-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .terapia-card.featured .terapia-img {
+            width: 45%;
+            height: auto;
+            min-height: 280px;
+            flex-shrink: 0;
+        }
+
+        .terapia-body {
+            padding: 28px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .terapia-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda);
+            margin-bottom: 10px;
+        }
+
+        .terapia-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.45rem;
+            color: var(--texto-principal);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .terapia-body p {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+            line-height: 1.9;
+        }
+
+        .terapia-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--acento-lavanda);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 18px;
+            transition: gap 0.3s;
+        }
+
+        .terapia-link:hover {
+            gap: 10px;
+        }
+
+        .terapia-link::after {
+            content: '→';
+        }
+
+        /* Terapia Nenes card */
+        .terapia-nenes {
+            background: linear-gradient(135deg, #fdf8f5 60%, var(--acento-lavanda-pale));
+        }
+
+        /* ─── ESPECIALISTAS ─── */
+        .especialistas-section {
+            background: var(--blanco-puro);
+        }
+
+        .especialistas-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .especialistas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+        }
+
+        .especialista-card {
+            background: var(--bg-crema);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .especialista-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(100, 80, 70, 0.15);
+        }
+
+        .especialista-img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .especialista-body {
+            padding: 28px 32px;
+        }
+
+        .especialista-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .especialista-role {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .especialista-body p {
+            font-size: 0.88rem;
+            color: var(--texto-suave);
+            line-height: 1.9;
+        }
+
+        .especialista-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background: var(--acento-lavanda-pale);
+            color: var(--acento-lavanda);
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ─── CTA BANNER ─── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--acento-lavanda) 0%, #8e75a0 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--acento-lavanda);
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-wa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .wa-icon {
+            width: 22px;
+            height: 22px;
+            fill: #25d366;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #2e2830;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--acento-lavanda-light);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            list-style: none;
+            margin-bottom: 36px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--acento-lavanda-light);
+        }
+
+        .footer-social a {
+            color: var(--acento-lavanda-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-copy {
+            margin-top: 40px;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ─── MUSIC BUTTON ─── */
+        .music-btn {
+            position: fixed;
+            bottom: 104px;
+            right: 32px;
+            z-index: 200;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: rgba(250, 246, 242, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(162, 138, 176, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            outline: none;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 28px rgba(162, 138, 176, 0.5);
+        }
+
+        .music-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--acento-lavanda);
+        }
+
+        /* pulse ring when playing */
+        .music-btn.playing {
+            background: var(--acento-lavanda);
+        }
+
+        .music-btn.playing svg {
+            fill: white;
+        }
+
+        .music-btn.playing::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid var(--acento-lavanda-light);
+            animation: musicPulse 1.8s ease-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        /* ─── CARD CLICKABLE HINT ─── */
+        .terapia-card {
+            cursor: pointer;
+        }
+
+        .card-hint {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda-light);
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-hint svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--acento-lavanda-light);
+        }
+
+        /* ─── MODAL ─── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .modal-overlay.open {
+            pointer-events: all;
+            opacity: 1;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(46, 40, 48, 0.72);
+            backdrop-filter: blur(6px);
+        }
+
+        /* 3-D flip container */
+        .modal-flip {
+            position: relative;
+            z-index: 1;
+            width: min(860px, 100%);
+            max-height: 88vh;
+            perspective: 1200px;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-height: 88vh;
+            background: var(--blanco-puro);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 42% 1fr;
+            box-shadow: 0 32px 80px rgba(46, 40, 48, 0.35);
+            transform: rotateY(90deg) scale(0.85);
+            transform-origin: center center;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: rotateY(0deg) scale(1);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-body {
+            padding: 48px 44px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--acento-lavanda);
+            margin-bottom: 12px;
+        }
+
+        .modal-body h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 300;
+            margin-bottom: 0;
+            color: var(--texto-principal);
+        }
+
+        .modal-divider {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, var(--acento-lavanda), var(--acento-oro));
+            margin: 20px 0;
+        }
+
+        .modal-body p {
+            font-size: 0.95rem;
+            color: var(--texto-suave);
+            line-height: 2;
+            margin-bottom: 16px;
+        }
+
+        .modal-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--acento-lavanda);
+            color: white;
+            text-decoration: none;
+            padding: 13px 30px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 24px;
+            transition: background 0.3s, transform 0.3s;
+            align-self: flex-start;
+        }
+
+        .modal-cta:hover {
+            background: #8e75a0;
+            transform: translateY(-2px);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, background 0.3s;
+            outline: none;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: white;
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--texto-principal);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* extra content per terapia */
+        .modal-bullets {
+            list-style: none;
+            margin: 8px 0 0;
+        }
+
+        .modal-bullets li {
+            font-size: 0.88rem;
+            color: var(--texto-suave);
+            line-height: 1.8;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(162, 138, 176, 0.1);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .modal-bullets li::before {
+            content: '✦';
+            color: var(--acento-lavanda-light);
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 640px) {
+            .modal-card {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-img {
+                min-height: 220px;
+                max-height: 220px;
+            }
+
+            .modal-body {
+                padding: 28px 24px;
+            }
+        }
+
+        /* ─── WHATSAPP FLOAT ─── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: #25d366;
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        /* ─── TERAPIA FLORAL EN ADULTOS ─── */
+        .floral-adultos-section {
+            background: var(--blanco-puro);
+        }
+
+        .floral-adultos-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .floral-adultos-img-wrap {
+            position: sticky;
+            top: 100px;
+        }
+
+        .floral-adultos-img-wrap img {
+            width: 100%;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 10px 40px var(--sombra);
+            object-fit: cover;
+        }
+
+        .adultos-beneficios-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .adultos-beneficio-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 20px;
+            background: var(--bg-crema);
+            border-radius: 14px;
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+            border-left: 3px solid var(--acento-oro-light);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .adultos-beneficio-item:hover {
+            border-color: var(--acento-oro);
+            box-shadow: 0 4px 18px var(--sombra);
+            transform: translateX(4px);
+        }
+
+        .adultos-beneficio-icon {
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .floral-adultos-inner {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .floral-adultos-img-wrap {
+                position: static;
+            }
+        }
+
+        /* ─── TERAPIA FLORAL ODONTOLÓGICA (detalle) ─── */
+        .floral-detail-section {
+            background: var(--blanco-puro);
+        }
+
+        .floral-detail-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .floral-detail-img-wrap {
+            position: sticky;
+            top: 100px;
+        }
+
+        .floral-detail-img-wrap img {
+            width: 100%;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 10px 40px var(--sombra);
+        }
+
+        .floral-detail-badge {
+            margin-top: 20px;
+            background: var(--acento-lavanda-pale);
+            border-radius: 14px;
+            padding: 16px 20px;
+            text-align: center;
+        }
+
+        .floral-detail-badge p {
+            font-size: 0.78rem;
+            color: var(--acento-lavanda);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .floral-grupos-list {
+            list-style: none;
+            margin: 28px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .floral-grupo-item {
+            background: var(--bg-crema);
+            border-radius: 14px;
+            padding: 18px 22px;
+            border-left: 3px solid var(--acento-lavanda-light);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .floral-grupo-item:hover {
+            border-color: var(--acento-lavanda);
+            box-shadow: 0 4px 18px var(--sombra);
+        }
+
+        .floral-grupo-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--acento-lavanda);
+            font-style: italic;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .floral-grupo-title {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--texto-principal);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .floral-grupo-desc {
+            font-size: 0.83rem;
+            color: var(--texto-suave);
+            line-height: 1.7;
+        }
+
+        .floral-beneficios {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .floral-beneficio {
+            background: linear-gradient(135deg, var(--acento-lavanda-pale), #f5eef8);
+            color: var(--acento-lavanda);
+            font-size: 0.76rem;
+            padding: 7px 16px;
+            border-radius: 24px;
+            letter-spacing: 0.04em;
+            border: 1px solid var(--acento-lavanda-light);
+        }
+
+        /* ─── TERAPIA FLORAL EN NIÑOS (detalle) ─── */
+        .ninos-detail-section {
+            background: linear-gradient(180deg, var(--bg-crema) 0%, #fdf7f0 100%);
+        }
+
+        .ninos-detail-inner {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .ninos-indicaciones {
+            list-style: none;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ninos-indicacion-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--blanco-puro);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px var(--sombra);
+        }
+
+        .ninos-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .ninos-indicacion-text {
+            font-size: 0.88rem;
+            color: var(--texto-suave);
+            line-height: 1.75;
+        }
+
+        .ninos-enfoque-box {
+            background: linear-gradient(135deg, var(--acento-lavanda-pale) 0%, #fef9f0 100%);
+            border-radius: 20px;
+            padding: 28px 30px;
+            margin-top: 28px;
+            border: 1px solid var(--acento-lavanda-light);
+        }
+
+        .ninos-enfoque-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--acento-lavanda);
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .ninos-enfoque-box p {
+            font-size: 0.88rem;
+            color: var(--texto-suave);
+            line-height: 1.9;
+        }
+
+        .ninos-img-wrap img {
+            width: 100%;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 10px 40px var(--sombra);
+        }
+
+        .ninos-img-wrap {
+            position: sticky;
+            top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .floral-detail-inner,
+            .ninos-detail-inner {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .floral-detail-img-wrap,
+            .ninos-img-wrap {
+                position: static;
+            }
+        }
+
+        /* ─── ANIMATE ON SCROLL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .vision-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .vision-img-wrap img {
+                height: 300px;
+            }
+
+            .terapias-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .terapia-card.featured {
+                flex-direction: column;
+            }
+
+            .terapia-card.featured .terapia-img {
+                width: 100%;
+                height: 240px;
+            }
+
+            .especialistas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+        <span class="nav-logo">Swami</span>
+        <ul class="nav-links">
+            <li><a href="#vision">Visión</a></li>
+            <li><a href="#terapias">Terapias</a></li>
+            <li><a href="#floral-odontologica">Floral</a></li>
+            <li><a href="#floral-adultos">Adultos</a></li>
+            <li><a href="#floral-ninos">Niños</a></li>
+            <li><a href="#especialistas">Equipo</a></li>
+            <li><a href="https://wa.me/5491159980525" target="_blank">Turnos</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">Odontología Holística · Buenos Aires</span>
+            <h1>Salud bucal<br><em>con alma</em></h1>
+            <p class="hero-subtitle">Concebimos la salud bucal como parte de un sistema integral donde cuerpo, mente y
+                emociones se encuentran profundamente conectados.</p>
+            <a href="https://wa.me/5491159980525" class="hero-cta" target="_blank">Reservar turno</a>
+        </div>
+        <div class="hero-scroll">
+            <span>Explorar</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="vision-section" id="vision">
+        <div class="container">
+            <div class="vision-inner">
+                <div class="vision-img-wrap reveal">
+                    <img src="./assets/img/terapia.png" alt="Odontología holística" />
+                    <div class="vision-img-badge">
+                        Maestría<br>interior
+                    </div>
+                </div>
+                <div class="vision-text reveal reveal-delay-2">
+                    <span class="section-label">Nuestra visión</span>
+                    <h2><em>Swami</em><br><span style="text-align: right;padding-left: 2em;font-size: 0.95em;">más que
+                            odontología</span></h2>
+                    <div class="divider"></div>
+                    <p>Swami, que en sánscrito refiere a la maestría interior, propone una manera diferente de
+                        comprender la odontología: una práctica que no solo atiende síntomas, sino que busca comprender
+                        el origen profundo de cada manifestación en la boca.</p>
+                    <p>La cavidad oral refleja procesos físicos, emocionales y energéticos de nuestra historia. Cada
+                        consulta es un espacio de escucha y reconexión.</p>
+                    <a href="#terapias" class="terapia-link">Conocer nuestras terapias</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERAPIAS -->
+    <section class="terapias-section" id="terapias">
+        <div class="container">
+            <div class="terapias-header reveal">
+                <span class="section-label">Lo que ofrecemos</span>
+                <h2 style="font-size: 2em;">Nuestras <em>terapias</em></h2>
+            </div>
+            <div class="terapias-grid">
+
+                <!-- Biodecodificación -->
+                <div class="terapia-card reveal reveal-delay-1" data-img="./assets/img/biodecodificacion.jpg"
+                    data-tag="Emociones · Vínculos" data-title="Biodecodificación Dental"
+                    data-desc="Observa la boca desde la relación con las emociones y el sistema nervioso. Cada pieza dental está vinculada simbólicamente con aspectos emocionales y vínculos familiares."
+                    data-bullets='["Lectura emocional de cada pieza dental","Exploración de vínculos familiares y su expresión bucal","Integración cuerpo-mente-emoción","Sesiones individuales y de acompañamiento"]'>
+                    <img src="./assets/img/biodecodificacion.jpg" alt="Biodecodificación Dental" class="terapia-img" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Emociones · Vínculos</span>
+                        <h3>Biodecodificación Dental</h3>
+                        <p>Observa la boca desde la relación con las emociones y el sistema nervioso. Cada pieza dental
+                            está vinculada simbólicamente con aspectos emocionales y vínculos familiares.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Reiki -->
+                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/reiki.png"
+                    data-tag="Energía · Calma" data-title="Reiki Aplicado"
+                    data-desc="Acompañamiento energético para disminuir la ansiedad odontológica, relajar la musculatura facial y favorecer la calma antes y después de tratamientos."
+                    data-bullets='["Reducción de ansiedad ante el dentista","Relajación de la musculatura facial y mandibular","Equilibrio del campo energético","Pre y post tratamiento odontológico"]'>
+                    <img src="./assets/img/reiki.png" alt="Reiki Aplicado" class="terapia-img" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Energía · Calma</span>
+                        <h3>Reiki Aplicado</h3>
+                        <p>Acompañamiento energético para disminuir la ansiedad odontológica, relajar la musculatura
+                            facial y favorecer la calma antes y después de tratamientos.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Terapia Neural — featured -->
+                <div class="terapia-card featured reveal" data-img="./assets/img/terapiaNeural.png"
+                    data-tag="Sistema nervioso · Neurofocal" data-title="Terapia Neural y Odontología Neurofocal"
+                    data-desc="Utilizamos aplicaciones en puntos específicos para regular el sistema nervioso y tratar interferencias —cicatrices, focos crónicos— que afectan la regulación del organismo."
+                    data-bullets='["Regulación del sistema nervioso autónomo","Tratamiento de cicatrices e interferencias crónicas","Reducción del dolor e inflamación","Equilibrio mente-cuerpo mediante inyecciones suaves"]'>
+                    <img src="./assets/img/terapiaNeural.png" alt="Terapia Neural" class="terapia-img" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Sistema nervioso · Neurofocal</span>
+                        <h3>Terapia Neural y Odontología Neurofocal</h3>
+                        <p>Utilizamos aplicaciones en puntos específicos para regular el sistema nervioso y tratar
+                            interferencias —cicatrices, focos crónicos— que afectan la regulación del organismo.
+                            Mediante inyecciones suaves se restablece el equilibrio en los campos de interferencia.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Terapia Floral -->
+                <div class="terapia-card reveal reveal-delay-1" data-img="./assets/img/terapia-floral.png"
+                    data-tag="Flores de Bach · Emociones" data-title="Terapia Floral Odontológica"
+                    data-desc="Integramos los remedios florales de Bach para acompañar el proceso emocional de cada paciente, complementando el tratamiento desde adentro hacia afuera."
+                    data-bullets='["Selección personalizada de flores de Bach","Acompañamiento de miedos y fobias dentales","Complemento a tratamientos convencionales","Trabajo con el estado emocional profundo"]'>
+                    <img src="./assets/img/terapia-floral.png" alt="Terapia Floral" class="terapia-img cardImage" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Flores de Bach · Emociones</span>
+                        <h3>Terapia Floral Odontológica</h3>
+                        <p>Integramos los remedios florales de Bach para acompañar el proceso emocional de cada
+                            paciente, complementando el tratamiento desde adentro hacia afuera.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Yoga Facial -->
+                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/yoga-facial.png"
+                    data-tag="Bruxismo · Estrés" data-title="Yoga Facial"
+                    data-desc="Ejercicios suaves y respiración para aliviar tensiones en la mandíbula, rostro y cuello, reduciendo la sobrecarga del bruxismo y el estrés."
+                    data-bullets='["Relaja la musculatura de la mandíbula","Disminuye tensión por bruxismo","Mejora la movilidad mandibular","Reduce dolor facial y cervical","Favorece la conciencia corporal y la relajación"]'>
+                    <img src="./assets/img/yoga-facial.png" alt="Yoga Facial" class="terapia-img cardImage" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Bruxismo · Estrés</span>
+                        <h3>Yoga Facial</h3>
+                        <p>Ejercicios suaves y respiración para aliviar tensiones en la mandíbula, rostro y cuello,
+                            reduciendo la sobrecarga del bruxismo y el estrés. Complemento terapéutico para el
+                            equilibrio nervioso.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Terapia en Niños — featured -->
+                <div class="terapia-card featured terapia-nenes reveal" data-img="./assets/img/terapianenes.png"
+                    data-tag="Pediatría holística" data-title="Terapia Floral en Niños"
+                    data-desc="Un abordaje delicado y especialmente diseñado para acompañar a los más pequeños desde un lugar de calma y confianza."
+                    data-bullets='["Acompañamiento de miedos y ansiedades infantiles","Trabajo con emociones que se expresan en la boca","Flores de Bach adaptadas a niños","Entorno seguro y contenedor para la primera consulta","Integración con la familia"]'>
+                    <img src="./assets/img/terapianenes.png" alt="Terapia Floral en Niños" class="terapia-img" />
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Pediatría holística</span>
+                        <h3>Terapia Floral en Niños</h3>
+                        <p>Un abordaje delicado y especialmente diseñado para acompañar a los más pequeños desde un
+                            lugar de calma y confianza. Los remedios florales ayudan a procesar emociones, miedos y
+                            tensiones que a veces se manifiestan en la boca y en el cuerpo.</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TERAPIA FLORAL ODONTOLÓGICA DETALLE -->
+    <section class="floral-detail-section" id="floral-odontologica">
+        <div class="container">
+            <div class="floral-detail-inner">
+
+                <div class="floral-detail-img-wrap reveal">
+                    <img src="./assets/img/terapia-floral.png" alt="Terapia Floral Odontológica" />
+                    <div class="floral-detail-badge">
+                        <p>🌸 Flores de Bach · Aval OMS</p>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-delay-1">
+                    <span class="section-label">Terapia Floral</span>
+                    <h2>Terapia Floral aplicada a <em>Odontología</em></h2>
+                    <div class="divider"></div>
+                    <p style="font-size:0.95rem;color:var(--texto-suave);line-height:2;margin-bottom:8px;">
+                        Terapia natural que acompaña los procesos emocionales vinculados a la atención odontológica, ayudando a reducir ansiedad, miedos y estrés, tanto en niños como en adultos.
+                    </p>
+
+                    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;margin:28px 0 14px;color:var(--texto-principal);">🌼 Grupos emocionales aplicados</h3>
+
+                    <ul class="floral-grupos-list">
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">1 · Miedos</span>
+                            <span class="floral-grupo-title">Miedo al dentista, a la anestesia y al dolor</span>
+                            <span class="floral-grupo-desc">Miedo al dentista, a la anestesia, al dolor, al ruido, a procedimientos nuevos.</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">2 · Incertidumbre</span>
+                            <span class="floral-grupo-title">Dudas e inseguridad antes del tratamiento</span>
+                            <span class="floral-grupo-desc">Dudas, inseguridad antes del tratamiento, dificultad para confiar en el proceso.</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">3 · Falta de interés por el presente</span>
+                            <span class="floral-grupo-title">Desconexión y evasión en consulta</span>
+                            <span class="floral-grupo-desc">Desconexión, evasión, distracción en consulta, cansancio mental (frecuente en niños).</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">4 · Soledad</span>
+                            <span class="floral-grupo-title">Sensación de desamparo en el sillón</span>
+                            <span class="floral-grupo-desc">Sensación de desamparo en el sillón odontológico, dificultad para pedir ayuda o expresar emociones.</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">5 · Hipersensibilidad emocional</span>
+                            <span class="floral-grupo-title">Hipersensibilidad al dolor y estímulos del consultorio</span>
+                            <span class="floral-grupo-desc">Hipersensibilidad al dolor, al tacto, a sonidos y estímulos del consultorio.</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">6 · Desaliento o agotamiento</span>
+                            <span class="floral-grupo-title">Tratamientos largos y experiencias previas negativas</span>
+                            <span class="floral-grupo-desc">Pacientes con tratamientos largos, reiterados, enfermedades crónicas o experiencias previas negativas.</span>
+                        </li>
+                        <li class="floral-grupo-item">
+                            <span class="floral-grupo-num">7 · Preocupación excesiva</span>
+                            <span class="floral-grupo-title">Dificultad para delegar el cuidado en el profesional</span>
+                            <span class="floral-grupo-desc">Pacientes controladores, rígidos o con dificultad para delegar el cuidado en el profesional.</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;margin:28px 0 14px;color:var(--texto-principal);">🌿 Beneficios en Odontología</h3>
+                    <div class="floral-beneficios">
+                        <span class="floral-beneficio">Mejora la experiencia en consulta</span>
+                        <span class="floral-beneficio">Favorece la cooperación del paciente</span>
+                        <span class="floral-beneficio">Reduce ansiedad y tensión</span>
+                        <span class="floral-beneficio">Acompaña tratamientos prolongados</span>
+                        <span class="floral-beneficio">Apta para niños y adultos</span>
+                    </div>
+
+                    <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank" style="margin-top:28px;">Consultar por esta terapia</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TERAPIA FLORAL EN NIÑOS DETALLE -->
+    <section class="ninos-detail-section" id="floral-ninos">
+        <div class="container">
+            <div class="ninos-detail-inner">
+
+                <div class="reveal">
+                    <span class="section-label">Pediatría Holística</span>
+                    <h2>Terapia Floral en <em>Niños</em></h2>
+                    <div class="divider"></div>
+                    <p style="font-size:0.95rem;color:var(--texto-suave);line-height:2;margin-bottom:4px;">
+                        Un acompañamiento suave y respetuoso que ayuda a equilibrar los aspectos emocionales, cognitivos y conductuales, favoreciendo el bienestar integral en las distintas etapas del desarrollo.
+                    </p>
+
+                    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;margin:28px 0 14px;color:var(--texto-principal);">🌸 Indicada en niños que presentan:</h3>
+
+                    <ul class="ninos-indicaciones">
+                        <li class="ninos-indicacion-item">
+                            <span class="ninos-icon">🎯</span>
+                            <span class="ninos-indicacion-text">Dificultades de concentración y atención</span>
+                        </li>
+                        <li class="ninos-indicacion-item">
+                            <span class="ninos-icon">📱</span>
+                            <span class="ninos-indicacion-text">Sobrecarga por uso de pantallas: irritabilidad, dispersión y ansiedad</span>
+                        </li>
+                        <li class="ninos-indicacion-item">
+                            <span class="ninos-icon">📚</span>
+                            <span class="ninos-indicacion-text">Agotamiento escolar y estrés por exigencia académica</span>
+                        </li>
+                        <li class="ninos-indicacion-item">
+                            <span class="ninos-icon">🌿</span>
+                            <span class="ninos-indicacion-text">Procesos de enfermedad, acompañando lo emocional</span>
+                        </li>
+                        <li class="ninos-indicacion-item">
+                            <span class="ninos-icon">🧠</span>
+                            <span class="ninos-indicacion-text">Desafíos cognitivos actuales: hiperestimulación, cansancio mental y dificultad para autorregularse</span>
+                        </li>
+                    </ul>
+
+                    <div class="ninos-enfoque-box">
+                        <h4>✨ Enfoque</h4>
+                        <p>Las flores actúan como un regulador emocional y energético, ayudando al niño a recuperar calma, foco, descanso y capacidad de adaptación, siempre como complemento de los abordajes médicos y educativos.</p>
+                        <p style="margin-top:12px;">Un espacio de acompañamiento que respeta los tiempos del niño y su mundo emocional.</p>
+                    </div>
+
+                    <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank" style="margin-top:28px;">Consultar por esta terapia</a>
+                </div>
+
+                <div class="ninos-img-wrap reveal reveal-delay-2">
+                    <img src="./assets/img/terapianenes.png" alt="Terapia Floral en Niños" />
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TERAPIA FLORAL EN ADULTOS DETALLE -->
+    <section class="floral-adultos-section" id="floral-adultos">
+        <div class="container">
+            <div class="floral-adultos-inner">
+
+                <div class="floral-adultos-img-wrap reveal">
+                    <img src="./assets/img/terapiaFloralAdultos.jpeg" alt="Terapia Floral en Adultos" />
+                </div>
+
+                <div class="reveal reveal-delay-1">
+                    <span class="section-label">Bienestar · Emociones</span>
+                    <h2>Terapia Floral en <em>Adultos</em></h2>
+                    <div class="divider"></div>
+                    <p style="font-size:0.95rem;color:var(--texto-suave);line-height:2;margin-bottom:14px;">
+                        La terapia floral es un sistema natural que utiliza esencias de flores para acompañar el equilibrio emocional y el bienestar general de la persona.
+                    </p>
+                    <p style="font-size:0.95rem;color:var(--texto-suave);line-height:2;margin-bottom:14px;">
+                        Actúa de manera suave sobre los estados emocionales, ayudando a armonizar situaciones como estrés, ansiedad, miedo, angustia, sobrecarga mental o momentos de cambio personal.
+                    </p>
+                    <p style="font-size:0.95rem;color:var(--texto-suave);line-height:2;margin-bottom:28px;">
+                        Cada preparación floral se selecciona de forma <em style="color:var(--acento-lavanda);font-style:italic;">individual</em>, considerando la vivencia emocional de la persona y su proceso personal.
+                    </p>
+
+                    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;margin-bottom:18px;color:var(--texto-principal);">Beneficios</h3>
+
+                    <ul class="adultos-beneficios-list">
+                        <li class="adultos-beneficio-item">
+                            <span class="adultos-beneficio-icon">🌸</span>
+                            <span>Favorece el equilibrio emocional</span>
+                        </li>
+                        <li class="adultos-beneficio-item">
+                            <span class="adultos-beneficio-icon">🍃</span>
+                            <span>Reduce estrés y ansiedad</span>
+                        </li>
+                        <li class="adultos-beneficio-item">
+                            <span class="adultos-beneficio-icon">🌿</span>
+                            <span>Acompaña procesos de cambio o crisis</span>
+                        </li>
+                        <li class="adultos-beneficio-item">
+                            <span class="adultos-beneficio-icon">✨</span>
+                            <span>Mejora la claridad mental y el bienestar interno</span>
+                        </li>
+                        <li class="adultos-beneficio-item">
+                            <span class="adultos-beneficio-icon">💫</span>
+                            <span>Complementa otros abordajes terapéuticos</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank" style="margin-top:28px;">Consultar por esta terapia</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIALISTAS -->
+    <section class="especialistas-section" id="especialistas">
+        <div class="container">
+            <div class="especialistas-header reveal">
+                <span class="section-label">Nuestro equipo</span>
+                <h2>Las <em>especialistas</em></h2>
+            </div>
+            <div class="especialistas-grid">
+
+                <div class="especialista-card reveal reveal-delay-1" data-img="./assets/img/Dra.Ma.Soledad.Giménez.png"
+                    data-tag="Odontóloga · UAI" data-title="Dra. Ma. Soledad Giménez"
+                    data-desc="Odontóloga egresada de la Universidad Abierta Interamericana. Especialista en un abordaje holístico que integra la salud dental con el bienestar emocional y energético."
+                    data-bullets='["Reiki Máster","Terapia Floral","Yoga Facial","Terapia Neural"]'>
+                    <img src="./assets/img/Dra.Ma.Soledad.Giménez.png" alt="Dra. Ma. Soledad Giménez"
+                        class="especialista-img cardImage" />
+                    <div class="especialista-body">
+                        <h3>Dra. Ma. Soledad Giménez</h3>
+                        <span class="especialista-role">Odontóloga · UAI</span>
+                        <p>Odontóloga egresada de la Universidad Abierta Interamericana. Terapeuta floral, Reiki Máster
+                            y especialista en yoga facial y terapia neural.</p>
+                        <div class="especialista-tags">
+                            <span class="tag">Reiki Máster</span>
+                            <span class="tag">Terapia Floral</span>
+                            <span class="tag">Yoga Facial</span>
+                            <span class="tag">Terapia Neural</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="especialista-card reveal reveal-delay-2" data-img="./assets/img/Romina_Belén_Villarino.png"
+                    data-tag="Odontóloga · NYU" data-title="Romina Belén Villarino"
+                    data-desc="Odontóloga con formación en New York University. Especialista en bio-odontología y técnicas de sanación profunda que buscan el equilibrio integral del paciente."
+                    data-bullets='["Bio-odontología","Descodificación Dental","Registros Akáshicos"]'>
+                    <img src="./assets/img/Romina_Belén_Villarino.png" alt="Romina Belén Villarino"
+                        class="especialista-img" />
+                    <div class="especialista-body">
+                        <h3>Romina Belén Villarino</h3>
+                        <span class="especialista-role">Odontóloga · NYU</span>
+                        <p>Odontóloga con formación en New York University. Especialista en bio-odontología,
+                            descodificación dental y registros akáshicos.</p>
+                        <div class="especialista-tags">
+                            <span class="tag">Bio-odontología</span>
+                            <span class="tag">Descodificación</span>
+                            <span class="tag">Registros Akáshicos</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="container reveal">
+            <h2>Comenzá tu camino<br><em>hacia el bienestar</em></h2>
+            <p>Reservá una consulta y descubrí una odontología que te cuida en profundidad.</p>
+            <a href="https://wa.me/5491159980525" class="cta-wa" target="_blank">
+                <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Escribirnos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="footer-logo">Swami</span>
+        <p class="footer-tagline">Odontología con mirada integral</p>
+        <ul class="footer-links">
+            <li><a href="#vision">Visión</a></li>
+            <li><a href="#terapias">Terapias</a></li>
+            <li><a href="#floral-odontologica">Floral</a></li>
+            <li><a href="#especialistas">Equipo</a></li>
+        </ul>
+        <div class="footer-social">
+            <a href="https://instagram.com/gms.bienestar" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+                @gms.bienestar
+            </a>
+        </div>
+        <p class="footer-copy">© 2025 Swami – Odontología Holística · Todos los derechos reservados</p>
+    </footer>
+
+    <!-- AUDIO -->
+    <audio id="bgMusic" loop preload="none">
+        <source src="./assets/botn_musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- MUSIC BUTTON -->
+    <button class="music-btn" id="musicBtn" aria-label="Reproducir música" title="Música ambiente">
+        <svg id="iconPlay" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="iconPause" viewBox="0 0 24 24" style="display:none">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+    </button>
+
+    <!-- MODAL TERAPIA -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-flip">
+            <div class="modal-card" id="modalCard">
+                <img id="modalImg" src="" alt="" class="modal-img" />
+                <div class="modal-body">
+                    <span class="modal-tag" id="modalTag"></span>
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-divider"></div>
+                    <p id="modalDesc"></p>
+                    <ul class="modal-bullets" id="modalBullets"></ul>
+                    <a href="https://wa.me/5491159980525" class="modal-cta" target="_blank">
+                        Reservar consulta →
+                    </a>
+                </div>
+            </div>
+            <button class="modal-close" id="modalClose" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5491159980525" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script>
+        // ─── NAVBAR SCROLL ───
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ─── PARALLAX HERO ───
+        const heroBg = document.getElementById('heroBg');
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            if (y < window.innerHeight) {
+                heroBg.style.transform = `scale(1.05) translateY(${y * 0.25}px)`;
+            }
+        });
+
+        // ─── REVEAL ON SCROLL ───
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+
+        // ─── MUSIC PLAYER ───
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const iconPlay = document.getElementById('iconPlay');
+        const iconPause = document.getElementById('iconPause');
+        let playing = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!playing) {
+                audio.play().then(() => {
+                    playing = true;
+                    musicBtn.classList.add('playing');
+                    iconPlay.style.display = 'none';
+                    iconPause.style.display = '';
+                    musicBtn.setAttribute('aria-label', 'Pausar música');
+                }).catch(() => { });
+            } else {
+                audio.pause();
+                playing = false;
+                musicBtn.classList.remove('playing');
+                iconPlay.style.display = '';
+                iconPause.style.display = 'none';
+                musicBtn.setAttribute('aria-label', 'Reproducir música');
+            }
+        });
+
+        // ─── MODAL ───
+        const overlay = document.getElementById('modalOverlay');
+        const backdrop = document.getElementById('modalBackdrop');
+        const closeBtn = document.getElementById('modalClose');
+        const modalImg = document.getElementById('modalImg');
+        const modalTag = document.getElementById('modalTag');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalBullets = document.getElementById('modalBullets');
+
+        function openModal(card) {
+            const d = card.dataset;
+            modalImg.src = d.img || '';
+            modalImg.alt = d.title || '';
+            modalTag.textContent = d.tag || '';
+            modalTitle.textContent = d.title || '';
+            modalDesc.textContent = d.desc || '';
+
+            modalBullets.innerHTML = '';
+            try {
+                const bullets = JSON.parse(d.bullets || '[]');
+                bullets.forEach(b => {
+                    const li = document.createElement('li');
+                    li.textContent = b;
+                    modalBullets.appendChild(li);
+                });
+            } catch (e) { }
+
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // attach click to every therapy and specialist card
+        document.querySelectorAll('.terapia-card, .especialista-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // don't open if clicking the consult link
+                if (e.target.closest('.terapia-link')) return;
+                openModal(card);
+            });
+        });
+
+        backdrop.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+
+</html>
