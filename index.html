@@ -468,7 +468,7 @@
 
         .especialista-img {
             width: 100%;
-            height: 360px;
+            height: 510px;
             object-fit: cover;
             object-position: top center;
             display: block;
@@ -1263,6 +1263,20 @@
                 gap: 14px;
             }
         }
+
+        .contenedor-contain {
+  width: 300px; /* Tamaño del contenedor */
+  height: 300px; /* Tamaño del contenedor */
+  border: 1px solid black; /* Para visualizar el contenedor */
+  overflow: hidden; /* Opcional: oculta lo que se salga */
+}
+
+.imagen-contain {
+  width: 100%; /* Ocupa el ancho máximo del contenedor */
+  height: 100%; /* Ocupa el alto máximo del contenedor */
+  object-fit: contain; /* Esta es la clave: mantiene la proporción y encaja la imagen */
+}
+
     </style>
 </head>
 
@@ -1349,11 +1363,11 @@
                 </div>
 
                 <!-- Reiki -->
-                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/reiki.png"
+                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/reiki.jpeg"
                     data-tag="Energía · Calma" data-title="Reiki Aplicado"
                     data-desc="Acompañamiento energético para disminuir la ansiedad odontológica, relajar la musculatura facial y favorecer la calma antes y después de tratamientos."
                     data-bullets='["Reducción de ansiedad ante el dentista","Relajación de la musculatura facial y mandibular","Equilibrio del campo energético","Pre y post tratamiento odontológico"]'>
-                    <img src="./assets/img/reiki.png" alt="Reiki Aplicado" class="terapia-img" />
+                    <img src="./assets/img/reiki.jpeg" alt="Reiki Aplicado" class="terapia-img" />
                     <div class="terapia-body">
                         <span class="terapia-tag">Energía · Calma</span>
                         <h3>Reiki Aplicado</h3>
@@ -1395,11 +1409,11 @@
                 </div>
 
                 <!-- Yoga Facial -->
-                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/yoga-facial.png"
+                <div class="terapia-card reveal reveal-delay-2" data-img="./assets/img/yoga-facial.jpeg"
                     data-tag="Bruxismo · Estrés" data-title="Yoga Facial"
                     data-desc="Ejercicios suaves y respiración para aliviar tensiones en la mandíbula, rostro y cuello, reduciendo la sobrecarga del bruxismo y el estrés."
                     data-bullets='["Relaja la musculatura de la mandíbula","Disminuye tensión por bruxismo","Mejora la movilidad mandibular","Reduce dolor facial y cervical","Favorece la conciencia corporal y la relajación"]'>
-                    <img src="./assets/img/yoga-facial.png" alt="Yoga Facial" class="terapia-img cardImage" />
+                    <img src="./assets/img/yoga-facial.jpeg" alt="Yoga Facial" class="terapia-img cardImage" />
                     <div class="terapia-body">
                         <span class="terapia-tag">Bruxismo · Estrés</span>
                         <h3>Yoga Facial</h3>
@@ -1625,7 +1639,7 @@
             </div>
             <div class="especialistas-grid">
 
-                <div class="especialista-card reveal reveal-delay-1" data-img="./assets/img/Dra.Ma.Soledad.Giménez.png"
+                <div class="especialista-card reveal reveal-delay-1" data-img="./assets/img/sole2.jpeg"
                     data-tag="Odontóloga · UAI" data-title="Dra. Ma. Soledad Giménez"
                     data-desc="Odontóloga egresada de la Universidad Abierta Interamericana. Especialista en un abordaje holístico que integra la salud dental con el bienestar emocional y energético."
                     data-bullets='["Reiki Máster","Terapia Floral","Yoga Facial","Terapia Neural"]'>
@@ -1649,7 +1663,7 @@
                     data-tag="Odontóloga · NYU" data-title="Romina Belén Villarino"
                     data-desc="Odontóloga con formación en New York University. Especialista en bio-odontología y técnicas de sanación profunda que buscan el equilibrio integral del paciente."
                     data-bullets='["Bio-odontología","Descodificación Dental","Registros Akáshicos"]'>
-                    <img src="./assets/img/Romina_Belén_Villarino.png" alt="Romina Belén Villarino"
+                    <img src="./assets/img/romina.png" alt="Romina Belén Villarino"
                         class="especialista-img" />
                     <div class="especialista-body">
                         <h3>Romina Belén Villarino</h3>
@@ -1665,6 +1679,41 @@
                 </div>
 
             </div>
+<br>
+            <div class="terapia-card featured reveal visible"
+                 data-img="./assets/img/Brayan Enrique Vélez Giles2.jpeg" 
+                 data-tag="Licenciado en Psicología" 
+                 data-title="Brayan Enrique Vélez Giles" 
+                 data-desc=" Es Licenciado en Psicología por la Universidad Autónoma del Estado de México (UAEMex). Su trayectoria integra la psicología con tradiciones de sanación de oriente, explorando la relación entre cuerpo, emoción y conciencia.
+Está formado en Medicina Tradicional China y Acupuntura, Reiki tibetano, tántrico y hawaiano, Yoga de los Sutras de Patanjali y terapia floral internacional. Desde hace más de una década acompaña procesos de transformación interior como psicoterapeuta, acupunturista y facilitador de Reiki, integrando prácticas terapéuticas y contemplativas orientadas al equilibrio emocional y energético.
+Actualmente desarrolla una especialización en acupuntura aplicada a las emociones, basada en su libro “Acupuntura emocional: de la aguja a la mente”, promoviendo una visión integral de la salud y el bienestar..</p>
+   "
+                  data-bullets="[&quot;Regulación del sistema nervioso autónomo&quot;,&quot;Tratamiento de cicatrices e interferencias crónicas&quot;,&quot;Reducción del dolor e inflamación&quot;,&quot;Equilibrio mente-cuerpo mediante inyecciones suaves&quot;]">
+                    <img src="./assets/img/Brayan Enrique Vélez Giles.jpeg" alt="Brayan Enrique Vélez Giles" class="terapia-img">
+                    <div class="terapia-body">
+                        <span class="terapia-tag">Sistema nervioso · Neurofocal</span>
+                        <h3>Brayan Enrique Vélez Giles</h3>
+                        <p>  Es Licenciado en Psicología por la Universidad Autónoma del Estado de México (UAEMex). Su trayectoria integra la psicología con tradiciones de sanación de oriente, explorando la relación entre cuerpo, emoción y conciencia.
+
+Está formado en Medicina Tradicional China y Acupuntura, Reiki tibetano, tántrico y hawaiano, Yoga de los Sutras de Patanjali y terapia floral internacional. Desde hace más de una década acompaña procesos de transformación interior como psicoterapeuta, acupunturista y facilitador de Reiki, integrando prácticas terapéuticas y contemplativas orientadas al equilibrio emocional y energético.
+
+Actualmente desarrolla una especialización en acupuntura aplicada a las emociones, basada en su libro “Acupuntura emocional: de la aguja a la mente”, promoviendo una visión integral de la salud y el bienestar..</p>
+                        <a href="https://wa.me/5491159980525" class="terapia-link" target="_blank">Consultar</a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </section>
 
