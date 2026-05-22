@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Swami | Bienestar Integral</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+--bg:#f8f5f1;
+--bg-soft:#fdfbf8;
+--card:rgba(255,255,255,.72);
+
+--text:#473f3b;
+--muted:#857b74;
+
+--lavender:#a896b7;
+--lavender-light:#d9d0e2;
+
+--sage:#b8c7bb;
+--sage-dark:#8d9f91;
+
+--gold:#ccb48a;
+
+--line:rgba(90,70,50,.08);
+
+--shadow:
+0 10px 40px rgba(80,60,40,.06);
+
+--radius:28px;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left, rgba(217,208,226,.45), transparent 30%),
+radial-gradient(circle at bottom right, rgba(184,199,187,.25), transparent 30%),
+var(--bg);
+
+font-family:'Manrope',sans-serif;
+color:var(--text);
+overflow-x:hidden;
+line-height:1.8;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+.container{
+width:min(1180px,92%);
+margin:auto;
+}
+
+/* NAV */
+
+nav{
+
+position:fixed;
+top:18px;
+left:50%;
+transform:translateX(-50%);
+
+width:min(1200px,94%);
+z-index:1000;
+
+padding:18px 28px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.4);
+
+border-radius:999px;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.04);
+
+transition:.4s ease;
+}
+
+nav.scrolled{
+
+top:10px;
+background:rgba(255,255,255,.78);
+}
+
+.logo{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+font-style:italic;
+color:var(--lavender);
+letter-spacing:.03em;
+}
+
+.nav-links{
+
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.nav-links a{
+
+text-decoration:none;
+font-size:.78rem;
+text-transform:uppercase;
+letter-spacing:.14em;
+color:var(--muted);
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:var(--lavender);
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(to bottom,
+rgba(248,245,241,.45),
+rgba(248,245,241,.75));
+
+z-index:1;
+}
+
+.hero-bg{
+
+position:absolute;
+inset:0;
+
+background:
+url('./assets/img/hero-manos.png')
+center center/cover no-repeat;
+
+transform:scale(1.05);
+filter:saturate(.92);
+}
+
+.hero-content{
+
+position:relative;
+z-index:2;
+
+max-width:780px;
+padding-top:100px;
+}
+
+.hero-content{
+	margin:0 auto;
+	text-align:center;
+}
+
+.eyebrow{
+
+display:inline-block;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(10px);
+
+font-size:.7rem;
+letter-spacing:.16em;
+text-transform:uppercase;
+color:var(--lavender);
+
+margin-bottom:24px;
+}
+
+.hero h1{
+
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(4rem,8vw,7rem);
+font-weight:300;
+line-height:.95;
+letter-spacing:-.03em;
+
+margin-bottom:26px;
+}
+
+.hero h1 em{
+
+font-style:italic;
+color:var(--lavender);
+}
+
+.hero p{
+
+max-width:620px;
+
+font-size:1.08rem;
+color:var(--muted);
+
+margin-bottom:40px;
+}
+
+.hero-actions{
+
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.btn{
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:16px 34px;
+
+border-radius:999px;
+
+text-decoration:none;
+transition:.35s ease;
+
+font-size:.82rem;
+letter-spacing:.12em;
+text-transform:uppercase;
+}
+
+.btn-primary{
+
+background:linear-gradient(
+135deg,
+var(--lavender),
+#b6a6c5
+);
+
+color:white;
+
+box-shadow:
+0 12px 30px rgba(168,150,183,.28);
+}
+
+.btn-primary:hover{
+
+transform:translateY(-3px);
+}
+
+.btn-secondary{
+
+border:1px solid rgba(168,150,183,.2);
+
+background:rgba(255,255,255,.5);
+
+backdrop-filter:blur(10px);
+
+color:var(--text);
+}
+
+/* SECTIONS */
+
+section{
+padding:120px 0;
+}
+
+.section-head{
+
+margin-bottom:70px;
+text-align:center;
+}
+
+.section-label{
+
+font-size:.72rem;
+letter-spacing:.24em;
+text-transform:uppercase;
+
+color:var(--lavender);
+
+margin-bottom:18px;
+display:block;
+}
+
+.section-head h2{
+
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(2.4rem,5vw,4rem);
+font-weight:300;
+line-height:1.1;
+}
+
+.section-head em{
+color:var(--lavender);
+font-style:italic;
+}
+
+.section-text{
+
+max-width:700px;
+margin:18px auto 0;
+
+color:var(--muted);
+}
+
+/* ABOUT */
+
+.about-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.about-image{
+
+border-radius:32px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.about-image img{
+
+height:640px;
+object-fit:cover;
+}
+
+.about-content h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:3rem;
+font-weight:300;
+
+margin-bottom:24px;
+}
+
+.about-content p{
+
+margin-bottom:22px;
+color:var(--muted);
+}
+
+/* CARDS */
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:26px;
+}
+
+.card{
+
+background:var(--card);
+
+border:1px solid rgba(255,255,255,.6);
+
+backdrop-filter:blur(14px);
+
+border-radius:var(--radius);
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+transition:.45s ease;
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.08);
+}
+
+.card-image{
+
+aspect-ratio:4/4.4;
+overflow:hidden;
+}
+
+.card-image img{
+
+width:100%;
+height:100%;
+/*object-fit:cover;*/
+transition:1s ease;
+}
+
+.card:hover img{
+transform:scale(1.05);
+}
+
+.card-body{
+
+padding:28px;
+}
+
+.card-tag{
+
+font-size:.68rem;
+letter-spacing:.18em;
+text-transform:uppercase;
+
+color:var(--lavender);
+
+margin-bottom:14px;
+display:block;
+}
+
+.card-body h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+font-weight:400;
+
+margin-bottom:14px;
+}
+
+.card-body p{
+
+font-size:.95rem;
+color:var(--muted);
+}
+
+/* SPECIAL */
+
+.special{
+
+margin-top:34px;
+
+padding:50px;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+135deg,
+rgba(217,208,226,.28),
+rgba(184,199,187,.18)
+);
+
+border:1px solid rgba(255,255,255,.5);
+
+display:grid;
+grid-template-columns:1.1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.special img{
+
+border-radius:28px;
+height:100%;
+object-fit:cover;
+}
+
+.special-content h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:3rem;
+font-weight:300;
+
+margin-bottom:18px;
+}
+
+.special-content p{
+color:var(--muted);
+}
+
+/* TEAM */
+
+.team{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:34px;
+}
+
+.team-card{
+
+background:rgba(255,255,255,.6);
+
+backdrop-filter:blur(16px);
+
+border-radius:36px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+transition:.4s ease;
+}
+
+.team-card:hover{
+transform:translateY(-8px);
+}
+
+.team-image{
+
+aspect-ratio:4/4.5;
+overflow:hidden;
+}
+
+.team-image img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.team-body{
+
+padding:30px;
+}
+
+.team-body h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+font-weight:400;
+
+margin-bottom:8px;
+}
+
+.team-role{
+
+font-size:.72rem;
+letter-spacing:.16em;
+text-transform:uppercase;
+
+color:var(--lavender);
+
+margin-bottom:16px;
+display:block;
+}
+
+.team-body p{
+color:var(--muted);
+}
+
+/* CTA */
+
+.cta{
+
+padding:130px 0;
+text-align:center;
+}
+
+.cta-box{
+
+padding:80px 50px;
+
+border-radius:50px;
+
+background:
+linear-gradient(
+135deg,
+rgba(217,208,226,.55),
+rgba(184,199,187,.35)
+);
+
+border:1px solid rgba(255,255,255,.6);
+
+box-shadow:var(--shadow);
+}
+
+.cta-box h2{
+
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(3rem,6vw,5rem);
+font-weight:300;
+line-height:1;
+margin-bottom:22px;
+}
+
+.cta-box p{
+
+max-width:640px;
+margin:auto auto 36px;
+
+color:var(--muted);
+}
+
+/* FOOTER */
+
+footer{
+
+padding:80px 0 50px;
+
+border-top:1px solid var(--line);
+}
+
+.footer-inner{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:50px;
+flex-wrap:wrap;
+}
+
+.footer-brand h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2.4rem;
+font-weight:300;
+font-style:italic;
+
+color:var(--lavender);
+
+margin-bottom:10px;
+}
+
+.footer-brand p{
+
+max-width:320px;
+color:var(--muted);
+}
+
+.footer-links{
+
+display:flex;
+gap:70px;
+}
+
+.footer-links ul{
+list-style:none;
+}
+
+.footer-links li{
+margin-bottom:12px;
+}
+
+.footer-links a{
+
+text-decoration:none;
+color:var(--muted);
+transition:.3s;
+}
+
+.footer-links a:hover{
+color:var(--lavender);
+}
+
+.footer-copy{
+
+margin-top:50px;
+padding-top:30px;
+
+border-top:1px solid var(--line);
+
+text-align:center;
+font-size:.85rem;
+color:var(--muted);
+}
+
+/* FLOAT WA */
+
+.whatsapp{
+
+position:fixed;
+right:24px;
+bottom:24px;
+
+width:62px;
+height:62px;
+
+border-radius:50%;
+
+background:#25d366;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:1000;
+
+box-shadow:
+0 10px 30px rgba(37,211,102,.35);
+
+transition:.35s;
+}
+
+.whatsapp:hover{
+transform:scale(1.08);
+}
+
+.whatsapp svg{
+
+width:30px;
+fill:white;
+}
+
+/* REVEAL */
+
+.reveal{
+
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.reveal.visible{
+
+opacity:1;
+transform:none;
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+.about-grid,
+.special{
+grid-template-columns:1fr;
+}
+
+.team{
+grid-template-columns:1fr;
+}
+
+.about-image img{
+height:420px;
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+padding:16px 22px;
+border-radius:24px;
+}
+
+.nav-links{
+display:none;
+}
+
+.hero{
+
+text-align:center;
+}
+
+.hero-content{
+margin:auto;
+}
+
+.hero-actions{
+justify-content:center;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+section{
+padding:90px 0;
+}
+
+.special{
+padding:30px;
+}
+
+.cta-box{
+padding:60px 28px;
+border-radius:36px;
+}
+
+.footer-inner{
+flex-direction:column;
+}
+
+.footer-links{
+gap:40px;
+flex-wrap:wrap;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+
+<div class="logo">Swami</div>
+
+<ul class="nav-links">
+<li><a href="#vision">Visión</a></li>
+<li><a href="#terapias">Terapias</a></li>
+<li><a href="#equipo">Equipo</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-bg"></div>
+
+<div class="container">
+
+<div class="hero-content reveal">
+
+<span class="eyebrow">
+Bienestar • Equilibrio • Salud Integral
+</span>
+
+<h1>Swami<br>
+<em>Volver a la calma</em>
+</h1>
+
+<p>
+Un espacio terapéutico integrativo donde cuerpo, emociones y energía
+se acompañan en armonía para recuperar bienestar y presencia.
+</p>
+
+<div class="hero-actions">
+
+<a href="https://wa.me/5491159980525" class="btn btn-primary">
+Reservar consulta
+</a>
+
+<a href="#terapias" class="btn btn-secondary">
+Explorar terapias
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="vision">
+
+<div class="container">
+
+<div class="about-grid">
+
+<div class="about-image reveal">
+<img src="./assets/img/hero-manos.png">
+</div>
+
+<div class="about-content reveal">
+
+<span class="section-label">
+Nuestra visión
+</span>
+
+<h3>
+Una mirada <em style="color:var(--lavender)">integral</em>
+</h3>
+
+<p>
+En Swami concebimos la salud como una experiencia profunda donde cuerpo,
+mente y emociones se encuentran conectados.
+</p>
+
+<p>
+Cada consulta es un espacio de escucha, acompañamiento y bienestar,
+integrando terapias suaves que favorecen el equilibrio emocional,
+energético y físico.
+</p>
+
+<a href="#terapias" class="btn btn-primary">
+Conocer terapias
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="terapias">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<span class="section-label">
+Terapias
+</span>
+
+<h2>
+Un espacio de <em>bienestar</em>
+</h2>
+
+<p class="section-text">
+Abordajes integrativos orientados a recuperar equilibrio, calma y armonía.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card reveal">
+
+<div class="card-image">
+<img src="./assets/img/Psicologia.jpeg">
+</div>
+
+<div class="card-body">
+
+<span class="card-tag">
+Emociones
+</span>
+
+<h3>
+Psicología
+</h3>
+
+<p>
+Acompañamiento terapéutico enfocado en el bienestar emocional,
+la conciencia y el equilibrio interno.
+</p>
+
+</div>
+
+</div>
+
+<div class="card reveal">
+
+<div class="card-image">
+<img src="./assets/img/reiki.jpeg">
+</div>
+
+<div class="card-body">
+
+<span class="card-tag">
+Energía
+</span>
+
+<h3>
+Reiki
+</h3>
+
+<p>
+Terapia energética orientada a disminuir estrés,
+ansiedad y tensiones físicas y emocionales.
+</p>
+
+</div>
+
+</div>
+
+<div class="card reveal">
+
+<div class="card-image">
+<img src="./assets/img/yoga-facial.jpeg">
+</div>
+
+<div class="card-body">
+
+<span class="card-tag">
+Relajación
+</span>
+
+<h3>
+Yoga Facial
+</h3>
+
+<p>
+Ejercicios suaves para aliviar tensiones mandibulares,
+estrés y sobrecarga muscular.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="special reveal">
+
+<img src="./assets/img/biodecodificacion.jpg">
+
+<div class="special-content">
+
+<span class="section-label">
+Integración emocional
+</span>
+
+<h3>
+Biodecodificación Dental
+</h3>
+
+<p>
+Una mirada terapéutica que relaciona emociones,
+historia personal y salud bucal, promoviendo
+un abordaje consciente e integral.
+</p>
+
+<br>
+
+<a href="https://wa.me/5491159980525" class="btn btn-primary">
+Consultar terapia
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="equipo">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<span class="section-label">
+Equipo
+</span>
+
+<h2>
+Profesionales <em>integrativas</em>
+</h2>
+
+</div>
+
+<div class="team">
+
+<div class="team-card reveal">
+
+<div class="team-image">
+<img src="./assets/img/Dr.sole.jpeg">
+</div>
+
+<div class="team-body">
+
+<h3>
+Ma. Soledad Giménez
+</h3>
+
+<span class="team-role">
+Odontología Holística
+</span>
+
+<p>
+Odontóloga y terapeuta integrativa especializada
+en bienestar emocional, terapia floral,
+reiki y yoga facial.
+</p>
+
+</div>
+
+</div>
+
+<div class="team-card reveal">
+
+<div class="team-image">
+<img src="./assets/img/romina.png">
+</div>
+
+<div class="team-body">
+
+<h3>
+Romina Villarino
+</h3>
+
+<span class="team-role">
+Bio Odontología
+</span>
+
+<p>
+Especialista en bio-odontología y terapias
+orientadas al equilibrio integral del paciente.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta" id="contacto">
+
+<div class="container">
+
+<div class="cta-box reveal">
+
+<h2>
+Tu bienestar<br>
+comienza hoy
+</h2>
+
+<p>
+Un espacio cálido y consciente para acompañar
+tu salud física, emocional y energética.
+</p>
+
+<a href="https://wa.me/5491159980525" class="btn btn-primary">
+Reservar turno
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<div class="footer-inner">
+
+<div class="footer-brand">
+
+<h3>
+Swami
+</h3>
+
+<p>
+Odontología y terapias integrativas con enfoque humano,
+emocional y consciente.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<ul>
+<li><a href="#vision">Visión</a></li>
+<li><a href="#terapias">Terapias</a></li>
+<li><a href="#equipo">Equipo</a></li>
+</ul>
+
+<ul>
+<li><a href="#">Instagram</a></li>
+<li><a href="#">WhatsApp</a></li>
+<li><a href="#">Turnos</a></li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-copy">
+© 2026 Swami · Bienestar Integral
+</div>
+
+</div>
+
+</footer>
+
+<a class="whatsapp"
+href="https://wa.me/5491159980525"
+target="_blank">
+
+<svg viewBox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+</svg>
+
+</a>
+
+<script>
+
+const nav = document.getElementById('nav');
+
+window.addEventListener('scroll',()=>{
+
+nav.classList.toggle(
+'scrolled',
+window.scrollY > 40
+);
+
+});
+
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('visible');
+
+}
+
+});
+
+},{threshold:.15});
+
+reveals.forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
