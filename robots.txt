@@ -1,0 +1,35 @@
+# Swami | Odontología Holística
+# robots.txt — permite indexación por buscadores y asistentes de IA
+
+User-agent: *
+Allow: /
+
+# Crawlers de IA / LLMs (explícitos para evitar bloqueos por defecto de algunos hosts)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://swami.ar/sitemap.xml

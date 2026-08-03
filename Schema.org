@@ -1,0 +1,14 @@
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"MedicalBusiness",
+ "name":"Swami",
+ "url":"https://swami.ar",
+ "description":"Centro de psicología y bienestar.",
+ "telephone":"+54...",
+ "address":{
+   "@type":"PostalAddress",
+   "addressLocality":"..."
+ }
+}
+</script>
