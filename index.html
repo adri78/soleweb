@@ -337,8 +337,8 @@
         }
 
         .terapias-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 28px;
         }
 
@@ -349,6 +349,8 @@
             box-shadow: 0 4px 24px var(--sombra);
             display: flex;
             flex-direction: column;
+            flex: 1 1 calc(50% - 14px);
+            max-width: calc(50% - 14px);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
@@ -357,12 +359,9 @@
             box-shadow: 0 12px 40px rgba(100, 80, 70, 0.13);
         }
 
-        .terapia-card:nth-child(1) {
-            grid-column: span 1;
-        }
-
         .terapia-card.featured {
-            grid-column: span 2;
+            flex: 1 1 100%;
+            max-width: 100%;
             flex-direction: row;
         }
 
@@ -994,14 +993,74 @@
         }
 
         @media (max-width: 768px) {
-            .floral-adultos-inner {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-            .floral-adultos-img-wrap {
-                position: static;
-            }
-        }
+    nav {
+        padding: 16px 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .vision-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .vision-img-wrap img {
+        height: 300px;
+    }
+
+    .terapias-grid {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .terapias-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .terapia-card,
+    .terapia-card.featured {
+        flex: 0 0 100%;
+        max-width: 100%;
+        scroll-snap-align: center;
+    }
+
+    /* ─── NUEVO: Ajusta todas las imágenes de terapias en celular ─── */
+    .terapia-img {
+        height: 280px !important; /* Altura ideal para pantallas de celular */
+        object-fit: cover !important;
+    }
+
+    .terapia-card.featured {
+        flex-direction: column;
+    }
+
+    .terapia-card.featured .terapia-img {
+        width: 100%;
+        height: 280px !important;
+    }
+
+    /* ─── NUEVO: Ajusta las fotos de las especialistas en celular ─── */
+    .especialista-img {
+        height: 350px !important;
+        object-fit: cover !important;
+    }
+
+    .especialistas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 14px;
+    }
+}
 
         /* ─── TERAPIA FLORAL ODONTOLÓGICA (detalle) ─── */
         .floral-detail-section {
@@ -1242,7 +1301,24 @@
             }
 
             .terapias-grid {
-                grid-template-columns: 1fr;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .terapias-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .terapia-card,
+            .terapia-card.featured {
+                flex: 0 0 100%;
+                max-width: 100%;
+                scroll-snap-align: center;
             }
 
             .terapia-card.featured {
@@ -1348,8 +1424,7 @@
                 <!-- Biodecodificación -->
                 <div class="terapia-card reveal reveal-delay-1" data-img="./assets/img/Psicologia.jpeg"
                     data-tag="Emociones · Vínculos" data-title="Psicología"
-                    data-desc="Su labor invita a recordar la unidad esencial entre mente, energía y espíritu, proponiendo un retorno al contacto natural con la vida como fuente de sanación y plenitud."
-                    '>
+                    data-desc="Su labor invita a recordar la unidad esencial entre mente, energía y espíritu, proponiendo un retorno al contacto natural con la vida como fuente de sanación y plenitud.">
                     <img src="./assets/img/Psicologia.jpeg" alt="Psicologia" class="terapia-img" />
                     <div class="terapia-body">
                         <span class="terapia-tag">Emociones · Vínculos</span>
